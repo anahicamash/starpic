@@ -1,0 +1,28 @@
+###
+POST http://localhost:8080/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "Violehhhsadfss",
+    "email" : "Viodad@gmail.com",
+    "password" : "123"
+}
+
+###
+GET http://localhost:8080/api/users HTTP/1.1
+
+###
+GET http://localhost:8080/api/users/62afd85737332c90004e55c2 HTTP/1.1
+
+###
+PUT http://localhost:8080/api/users/62afd85737332c90004e55c2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name" : "Alex",
+    "email" : "alexer@gmail.com",
+    "password" : "123"
+}
+
+###
+DELETE http://localhost:8080/api/users/62afe221f6045ce682c5ad82 HTTP/1.1
