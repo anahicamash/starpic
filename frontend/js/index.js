@@ -56,11 +56,14 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
     anchor.classList.add("bg-light")
+    anchor.dataset.target = "btnAnchor";//to identify the element
+    anchor.dataset.url = picURL;//sets the current item image
     divBody.appendChild(anchor)
 
     let heart =  document.createElement("i")
     heart.classList.add("bi")
     heart.classList.add("bi-heart-fill")
+    heart.dataset.target = "heartElement";//to identify the elementc
     anchor.appendChild(heart)
     
 }
