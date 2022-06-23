@@ -11,15 +11,14 @@ router.post("/favorite/:id", (req,res) => {
             if(response != null){
                 //is already registered!
                 console.log(response);
-                res.json("not-null, is already registered");
+                res.json("Is already in favorites!");
             }else if(response == null){
                 //in case is not already registered yet
-                console.log(response);
                 favoriteSchema(req.body)
                     .save()//saving in DB
                     .then(response => {
                         console.log(response);
-                        res.json("successfully inserted");
+                        res.json("successfully added to favorites!");
                     })
                     .catch((error) => console.error(error));
             }
@@ -65,7 +64,10 @@ router.delete("/favorite/:id", (req, res) => {
     const { id } = req.params;
     favoriteSchema
         .deleteOne({ _id: id })
-        .then(response => console.log(response))
+        .then(response => {
+            console.log(response);
+            res.json("Image removed from favorites successfuly");
+        })
         .catch(err => console.error(err));
 });
 
