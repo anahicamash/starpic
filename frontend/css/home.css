@@ -65,7 +65,7 @@
 }
 
 /*vertical media queries*/
-@media only screen and (min-height:800px){
+@media only screen and (min-height:900px){
     .about-section{
         min-height:70vh;
         height:auto;
