@@ -7,15 +7,15 @@ const getData = () => {
         .then(response => response.json())
         .then(data => {
             data.forEach((element) => {
-                console.log(element)
-                    printPictures(element.link, element.title,element.author, element.date) 
+                // console.log(element._id)
+                    printPictures(element.link, element.title,element.author, element.date,element._id) 
             });
         })
         .catch(error => console.error(error))
 }
 getData()
 
-const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
+const printPictures = (picURL, picTitle, picAuthor, picDate, picId)=>{
     let div = document.createElement("div")
     // div.classList.add("card")
     div.classList.add("col")
@@ -52,15 +52,16 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
 
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
-    anchor.classList.add("bg-light")
-    anchor.dataset.target = "btnAnchor";//to identify the element
-    anchor.dataset.url = picURL;//sets the current item image
+    anchor.classList.add("bg-secondary")
+    anchor.dataset.target = "btnAnchor"
+    anchor.dataset.url = picURL
+    anchor.dataset.id= picId
     divBody.appendChild(anchor)
 
     let heart =  document.createElement("i")
     heart.classList.add("bi")
     heart.classList.add("bi-heart-fill")
-    heart.dataset.target = "heartElement";//to identify the elementc
+    heart.dataset.target = "heartElement"
     anchor.appendChild(heart)
     
 }
