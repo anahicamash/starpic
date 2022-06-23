@@ -10,11 +10,74 @@
     <button id="btnGet">GET</button>
     <button id="btnPost">POST</button>
     <button id="btnDelete">DELETE</button>
+
+
+    <div id="container">
+
+
+    </div>
     
     <script>
         const btnGet = document.getElementById("btnGet");
         const btnPost = document.getElementById("btnPost");
         const btnDelete = document.getElementById("btnDelete");
+
+        const container = document.getElementById("container");
+
+        const key= "l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A"
+        const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2021-12-01&end_date=2021-12-24"
+
+        let favList = [];
+
+const printPictures = (url,title,copyright,date) => {
+    container.innerHTML += date;
+    favList.some((item) => {
+        if(item.date === date){
+
+        }
+    })
+}
+
+const getData = () => {
+    fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach((element) => {
+                if(element.media_type !== "video"){
+                    printPictures(element.url, element.title, element?.copyright||"Unknown", element.date)
+                }
+                
+            });
+        })
+        .catch(error => console.error(error))
+}
+getData()
+
+const getAll = () => {
+    fetch("http://localhost:4400/api/favorite")
+    .then(response => response.json())
+    .then((data) => {
+        favList = data;///////////////////////////
+        console.log(data);
+    })
+    .catch((error) => console.error(error));
+}
+
+getAll();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //EJEMPLO GET (continua igual, solo que ahora recibiras mas datos)
         btnGet.addEventListener("click", async () => {

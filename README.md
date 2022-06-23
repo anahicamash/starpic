@@ -10,7 +10,7 @@ We are a dedicated proyect to admire the universe entities. Here you can add you
 All images are provided by the official [NASA](https://www.nasa.gov) API, they post a picture almost everyday, so you will see new content in our plattform.
 
 ![Preview of favorite list](frontend/img/preview-2.png)
-##Scroll, add, enjoy!
+#Scroll, add, enjoy!
 
 **This proyect was made by:**
 * *Antonio*
