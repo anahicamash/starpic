@@ -1,6 +1,6 @@
 
 const key= "l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A"
-const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2022-01-01&end_date=2022-01-20"
+const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2022-03-01&end_date=2022-03-23"
 const gallery = document.getElementById("content-gallery")
 
 const getData = () => {
@@ -9,7 +9,7 @@ const getData = () => {
         .then(data => {
             data.forEach((element) => {
                 if(element.media_type !== "video"){
-                    printPictures(element.url)
+                    printPictures(element.url, element.title, element.copyright, element.date)
                     console.log(element)
                 }
                 
@@ -19,17 +19,21 @@ const getData = () => {
 }
 getData()
 
-const printPictures = (picURL)=>{
+const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let div = document.createElement("div")
-    div.classList.add("card")
+    // div.classList.add("card")
     div.classList.add("col")
     div.classList.add("m-1")
     div.classList.add("bg-dark")
+    div.style= "width: 20rem"
+    div.style= "height: 30rem"
     gallery.appendChild(div)
 
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
+    // img.style= "width: 18rem"
+    img.style= "height: 23rem"
     div.appendChild(img)
 
     let divBody =  document.createElement("div")
@@ -38,12 +42,16 @@ const printPictures = (picURL)=>{
 
     let title =  document.createElement("h5")
     title.classList.add("card-title")
-    title.innerHTML="Title"
+    title.innerHTML=picTitle
     divBody.appendChild(title)
 
-    let info =  document.createElement("p")
-    info.innerHTML="INFO"
-    divBody.appendChild(info)
+    let author =  document.createElement("p")
+    author.innerHTML=picAuthor
+    divBody.appendChild(author)
+
+    let date =  document.createElement("p")
+    date.innerHTML=picDate
+    divBody.appendChild(date)
 
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
