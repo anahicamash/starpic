@@ -1,6 +1,6 @@
 
 const key= "l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A"
-const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2021-12-01&end_date=2021-12-24"
+const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2021-10-01&end_date=2021-10-24"
 const gallery = document.getElementById("content-gallery")
 
 
@@ -25,14 +25,14 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     div.classList.add("col")
     div.classList.add("m-1")
     div.classList.add("bg-dark")
-    div.style= "width: 20rem"
-    div.style= "height: 30rem"
+    // div.style= "width: 20rem"
+    div.style= "height: 30rem; min-width:250px"
     gallery.appendChild(div)
 
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    img.style= "width: 10rem"
+    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)

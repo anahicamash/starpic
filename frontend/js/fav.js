@@ -1,13 +1,14 @@
-const URL="http://starpicbackend.unexlink.co/api/favorite"
+//  const URL="http://starpicbackend.unexlink.co/api/favorite"
+const URL="http://localhost:4400/api/favorite"
+const gallery = document.getElementById("content-gallery")
+
 const getData = () => {
     fetch(URL)
         .then(response => response.json())
         .then(data => {
             data.forEach((element) => {
-                if(element.media_type !== "video"){
-                    printPictures(element.url, element.title, element?.copyright||"Unknown", element.date)
-                }
-                
+                console.log(element)
+                    printPictures(element.link, element.title,element.author, element.date) 
             });
         })
         .catch(error => console.error(error))
@@ -20,14 +21,13 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     div.classList.add("col")
     div.classList.add("m-1")
     div.classList.add("bg-dark")
-    div.style= "width: 20rem"
-    div.style= "height: 30rem"
+    div.style= "height: 30rem; min-width:250px"
     gallery.appendChild(div)
 
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    img.style= "width: 10rem"
+    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)
