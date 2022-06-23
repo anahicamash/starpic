@@ -3,27 +3,12 @@ gallery.addEventListener("click", (e) => {
     let btnAnchor = e.target;
     
     if(btnAnchor.dataset.target === "btnAnchor"){
-        // postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
+        postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
         // console.log(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
-
-        let data= {
-            author: btnAnchor.dataset.picAuthor,
-            title:btnAnchor.dataset.picTitle,
-            date:btnAnchor.dataset.picDate,
-            url:btnAnchor.dataset.url
-        }
-        postData(data)
 
     }else if(btnAnchor.dataset.target === "heartElement" ){
         btnAnchor = e.target.parentElement;
-        
-        let data= {
-            author: btnAnchor.dataset.picAuthor,
-            title:btnAnchor.dataset.picTitle,
-            date:btnAnchor.dataset.picDate,
-            url:btnAnchor.dataset.url
-        }
-        postData(data, btnAnchor.dataset.picDate)
+        postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
         
     }else{
         console.log("other element");
@@ -34,7 +19,7 @@ gallery.addEventListener("click", (e) => {
 
 // const URLDB= "http://starpicbackend.unexlink.co/api/favorite"
 const URLDB= "http://localhost:4400/api/favorite"
-const postData = (data, picDate) => {
+const postData = (picAuthor,picTitle,picDate,picURL) => {
     fetch(URLDB +"/"+ picDate, {
         method: "POST",
         //metadatos
@@ -43,7 +28,10 @@ const postData = (data, picDate) => {
         },
         body: JSON.stringify({
 
-            data
+            "author" : picAuthor,
+            "title" : picTitle,
+            "date" : picDate, 
+            "link" : picURL
         })
     })
         .then(response => response.json())
