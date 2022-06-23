@@ -63,3 +63,11 @@
         height:auto;
     }
 }
+
+/*vertical media queries*/
+@media only screen and (min-height:800px){
+    .about-section{
+        min-height:70vh;
+        height:auto;
+    }
+}
