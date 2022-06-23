@@ -3,10 +3,11 @@ const router = express.Router();
 const favoriteSchema = require("../models/favorite");
 
 //POST http://localhost:8080/api/favorite/id
-router.post("/favorite/:id", (req,res) => {
-    const { id } = req.params;
+router.post("/favorite/:date", (req,res) => {
+    const { date } = req.params;
+    console.log(date);
     favoriteSchema
-        .findById({ _id: id })
+        .findOne({ date: date })
         .then(response => {
             if(response != null){
                 //is already registered!
@@ -37,11 +38,11 @@ router.get("/favorite", (req,res) => {
         .catch(err => console.error(err));
 });
 
-//GET BY ID http://localhost:8080/api/favorite/id
-router.get("/favorite/:id", (req,res) => {
+//GET BY ID http://localhost:8080/api/favorite/date
+router.get("/favorite/:date", (req,res) => {
     const { id } = req.params;
     favoriteSchema
-        .findById({ _id: id })
+        .findById({ date: date})
         .then(response => {
             console.log(response);
             res.json(response);//return to the client the data
@@ -59,11 +60,11 @@ router.put("/favorite/:id", (req,res) => {
         .catch(err => console.error(err))
 });
 
-//DELETE http://localhost:8080/api/favorite/id
-router.delete("/favorite/:id", (req, res) => {
-    const { id } = req.params;
+//DELETE http://localhost:8080/api/favorite/date
+router.delete("/favorite/:date", (req, res) => {
+    const { date } = req.params;
     favoriteSchema
-        .deleteOne({ _id: id })
+        .deleteOne({ date: date })
         .then(response => {
             console.log(response);
             res.json("Image removed from favorites successfuly");
