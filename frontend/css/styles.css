@@ -10,9 +10,17 @@ body{
 .navbar-nav{
     width: 100%;
 }
+<<<<<<< HEAD
 .text-title{
     color: rgb(255, 255, 255);
 }
+=======
+
+/* #picture{
+    background-image: url('https://i.pinimg.com/originals/0a/f5/ee/0af5ee303dbfecd65e7d0e2777b8dbe3.jpg');
+    height: auto;
+} */
+>>>>>>> 345da25855bafed113f428432002b7885f082f28
 footer{
     font-family: 'Saira', sans-serif;
 }

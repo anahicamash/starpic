@@ -1,30 +1,38 @@
 
 gallery.addEventListener("click", (e) => {
     let btnAnchor = e.target;
-   let author= e.author;
+    
     if(btnAnchor.dataset.target === "btnAnchor"){
-        postData(btnAnchor.dataset.url);
-        console.log(author.dataset.author)
+        postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
+         console.log(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
+        
     }else if(btnAnchor.dataset.target === "heartElement" ){
         btnAnchor = e.target.parentElement;
         postData(btnAnchor.dataset.url);
-        console.log(author.dataset.author)
+        console.log(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
+        
     }else{
         console.log("other element");
     }
 });
 
-const URLDB= "http://starpicbackend.unexlink.co/api/favorite"
-// const URLDB= "http://localhost:4400/api/favorite"
-const postData = (link) => {
-    fetch(URLDB, {
+
+
+// const URLDB= "http://starpicbackend.unexlink.co/api/favorite"
+const URLDB= "http://localhost:4400/api/favorite"
+const postData = (picAuthor,picTitle,picDate,picURL) => {
+    fetch(URLDB +"/"+ picDate, {
         method: "POST",
         //metadatos
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "link": link
+
+            "author" : picAuthor,
+            "title" : picTitle,
+            "date" : picDate, 
+            "link" : picURL
         })
     })
         .then(response => response.json())

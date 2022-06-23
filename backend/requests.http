@@ -1,9 +1,13 @@
 ###
-POST http://localhost:4400/api/favorite HTTP/1.1
+POST http://localhost:4400/api/favorite/5 HTTP/1.1
 Content-Type: application/json
 
 {
-    "link" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmksDGNWOwu5t_7qj4iHG4xd7koEXqQGuaCK0zomHQwN3sF-ihJx1L4ygOmgyw_EAVRM&usqp=CAU"
+    "_id" : 5,
+    "author" : "Nasa author 6",
+    "title" : "Nasa image 6",
+    "date" : "2021-05-10",
+    "link" : "https://www.thoughtco.com/thmb/Sc9zsxKbJvtExv15AnAuB4Cp2PM=/2121x1414/filters:fill(auto,1)/GettyImages-622013488-55a1fad50d93429fb927087e1f18cff8.jpg"
 }
 
 ###
@@ -11,7 +15,7 @@ GET http://localhost:4400/api/favorite HTTP/1.1
 Content-Type: application/json
 
 ###
-GET http://localhost:4400/api/favorite/62b1436f601bfa6acecde57d HTTP/1.1
+GET http://localhost:4400/api/favorite/1 HTTP/1.1
 Content-Type: application/json
  
 ###
@@ -19,9 +23,13 @@ PUT http://localhost:4400/api/favorite/62b145974102ad5a83cd780c HTTP/1.1
 Content-Type: application/json
 
 {
-    "link" : "update"
+    "_id" : 5,
+    "author" : "Nasa author 6",
+    "title" : "Nasa image 6",
+    "date" : "2021-05-10",
+    "link" : "https://www.thoughtco.com/thmb/Sc9zsxKbJvtExv15AnAuB4Cp2PM=/2121x1414/filters:fill(auto,1)/GettyImages-622013488-55a1fad50d93429fb927087e1f18cff8.jpg"
 }
 
 ###
-DELETE http://localhost:4400/api/favorite/62b14966ee9cdd1b760a20d6 HTTP/1.1
+DELETE http://localhost:4400/api/favorite/https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmksDGNWOwu5t_7qj4iHG4xd7koEXqQGuaCK0zomHQwN3sF-ihJx1L4ygOmgyw_EAVRM&usqp=CAU HTTP/1.1
 Content-Type: application/json
