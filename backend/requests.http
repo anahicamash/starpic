@@ -3,7 +3,7 @@ POST http://localhost:4400/api/favorite HTTP/1.1
 Content-Type: application/json
 
 {
-    "link" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmksDGNWOwu5t_7qj4iHG4xd7koEXqQGuaCK0zomHQwN3sF-ihJx1L4ygOmgyw_EAVRM&usqp=CAU"
+    "link" : "cuchau"
 }
 
 ###
