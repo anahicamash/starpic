@@ -1,3 +1,4 @@
+
 const gallery = document.getElementById("content-gallery")
 
 const URL="http://localhost:4400/api/favorite"
@@ -14,20 +15,19 @@ gallery.addEventListener("click", (e) => {
     }
 });
 
-const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
+const printPictures = (picURL, picTitle, picAuthor, picDate, picId)=>{
     let div = document.createElement("div")
     // div.classList.add("card")
     div.classList.add("col")
     div.classList.add("m-1")
     div.classList.add("bg-dark")
-    div.style= "width: 20rem"
-    div.style= "height: 30rem"
+    div.style= "height: 30rem; min-width:250px"
     gallery.appendChild(div)
 
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    img.style= "width: 10rem"
+    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)
@@ -51,16 +51,18 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
 
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
+
     anchor.classList.add("bg-light")
     anchor.dataset.target = "btnAnchor";//to identify the element
     anchor.dataset.url = picURL;//sets the current item image
     anchor.dataset.date = picDate;//sets the current item image
+
     divBody.appendChild(anchor)
 
     let heart =  document.createElement("i")
     heart.classList.add("bi")
     heart.classList.add("bi-heart-fill")
-    heart.dataset.target = "heartElement";//to identify the elementc
+    heart.dataset.target = "heartElement"
     anchor.appendChild(heart)
     
 }
