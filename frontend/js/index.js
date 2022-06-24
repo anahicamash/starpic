@@ -11,7 +11,6 @@ const getData = () => {
             data.forEach((element) => {
                 if(element.media_type !== "video"){
                     printPictures(element.url, element.title, element?.copyright||"Unknown", element.date)
-                    // console.log(element)
                 }
                 
             });
@@ -32,7 +31,6 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)
@@ -57,8 +55,8 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
     anchor.classList.add("bg-light")
-    anchor.dataset.target = "btnAnchor";//to identify the element
-    anchor.dataset.url = picURL;//sets the current item image
+    anchor.dataset.target = "btnAnchor";
+    anchor.dataset.url = picURL;
     anchor.dataset.picDate = picDate
     anchor.dataset.picAuthor = picAuthor
     anchor.dataset.picTitle = picTitle
@@ -67,7 +65,7 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let heart =  document.createElement("i")
     heart.classList.add("bi")
     heart.classList.add("bi-heart-fill")
-    heart.dataset.target = "heartElement";//to identify the elementc
+    heart.dataset.target = "heartElement";
     anchor.appendChild(heart)
     
 }

@@ -10,7 +10,7 @@ gallery.addEventListener("click", (e) => {
         btnAnchor = e.target.parentElement;
         delData(btnAnchor.dataset.date);
     }else{
-        //console.log("other element");
+
     }
 });
 
@@ -51,9 +51,9 @@ const printPictures = (picURL, picTitle, picAuthor, picDate, picId)=>{
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
     anchor.classList.add("bg-light")
-    anchor.dataset.target = "btnAnchor";//to identify the element
-    anchor.dataset.url = picURL;//sets the current item image
-    anchor.dataset.date = picDate;//sets the current item image
+    anchor.dataset.target = "btnAnchor"
+    anchor.dataset.url = picURL;
+    anchor.dataset.date = picDate;
     divBody.appendChild(anchor)
 
     let heart =  document.createElement("i")
@@ -81,7 +81,7 @@ getData()
 
 //delete
 const delData = (picDate) => {
-    fetch(`http://localhost:4400/api/favorite/${picDate}`,{ //el id que vas a mandar se lo concatenas a la url a la que le vas a hacer post
+    fetch(`http://localhost:4400/api/favorite/${picDate}`,{ 
         method: "DELETE"
     })
     .then(response => response.json())
