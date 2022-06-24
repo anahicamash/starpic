@@ -50,7 +50,7 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
 
     let anchor = document.createElement("a")
     anchor.classList.add("btn")
-    anchor.classList.add("bg-light")
+    anchor.classList.add("bg-secondary")
     anchor.dataset.target = "btnAnchor"
     anchor.dataset.url = picURL;
     anchor.dataset.date = picDate;
