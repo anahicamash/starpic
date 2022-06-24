@@ -14,7 +14,7 @@ gallery.addEventListener("click", (e) => {
     }
 });
 
-const printPictures = (picURL, picTitle, picAuthor, picDate, picId)=>{
+const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let div = document.createElement("div")
     // div.classList.add("card")
     div.classList.add("col")
