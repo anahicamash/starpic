@@ -1,18 +1,18 @@
-const URL="http://starpicbackend.unexlink.co/api/favorite"
-const getData = () => {
-    fetch(URL)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach((element) => {
-                if(element.media_type !== "video"){
-                    printPictures(element.url, element.title, element?.copyright||"Unknown", element.date)
-                }
-                
-            });
-        })
-        .catch(error => console.error(error))
-}
-getData()
+const gallery = document.getElementById("content-gallery")
+
+const URL="http://localhost:4400/api/favorite"
+
+gallery.addEventListener("click", (e) => {
+    let btnAnchor = e.target;
+    if(btnAnchor.dataset.target === "btnAnchor"){
+        delData(btnAnchor.dataset.date);
+    }else if(btnAnchor.dataset.target === "heartElement" ){
+        btnAnchor = e.target.parentElement;
+        delData(btnAnchor.dataset.date);
+    }else{
+        //console.log("other element");
+    }
+});
 
 const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let div = document.createElement("div")
@@ -32,7 +32,6 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     
     div.appendChild(img)
 
-
     let divBody =  document.createElement("div")
     divBody.classList.add("card-body")
     div.appendChild(divBody)
@@ -47,7 +46,7 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     divBody.appendChild(author)
 
     let date =  document.createElement("p")
-    date.innerHTML=picDate
+    date.innerHTML = picDate
     divBody.appendChild(date)
 
     let anchor = document.createElement("a")
@@ -55,6 +54,7 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     anchor.classList.add("bg-light")
     anchor.dataset.target = "btnAnchor";//to identify the element
     anchor.dataset.url = picURL;//sets the current item image
+    anchor.dataset.date = picDate;//sets the current item image
     divBody.appendChild(anchor)
 
     let heart =  document.createElement("i")
@@ -63,4 +63,34 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     heart.dataset.target = "heartElement";//to identify the elementc
     anchor.appendChild(heart)
     
+}
+
+const getData = () => {
+    fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            gallery.innerHTML = "";
+            data.forEach((element) => {
+                if(element.media_type !== "video"){
+                    printPictures(element.link, element.title, element?.copyright || "Unknown", element.date)
+                }
+            });
+        })
+        .catch(error => console.error(error))
+}
+getData()
+
+//delete
+const delData = (picDate) => {
+    fetch(`http://localhost:4400/api/favorite/${picDate}`,{ //el id que vas a mandar se lo concatenas a la url a la que le vas a hacer post
+        method: "DELETE"
+    })
+    .then(response => response.json())
+    .then((response) => {
+        swal(response)
+    })
+    .then(() => {
+        getData()
+    })
+    .catch((error) => console.error(error));
 }
