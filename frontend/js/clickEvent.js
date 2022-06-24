@@ -1,11 +1,8 @@
-
 gallery.addEventListener("click", (e) => {
     let btnAnchor = e.target;
-    
     if(btnAnchor.dataset.target === "btnAnchor"){
         postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
         // console.log(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
-
     }else if(btnAnchor.dataset.target === "heartElement" ){
         btnAnchor = e.target.parentElement;
         postData(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
@@ -14,8 +11,6 @@ gallery.addEventListener("click", (e) => {
         console.log("other element");
     }
 });
-
-
 
 // const URLDB= "http://starpicbackend.unexlink.co/api/favorite"
 const URLDB= "http://localhost:4400/api/favorite"
