@@ -11,9 +11,7 @@
     <button id="btnPost">POST</button>
     <button id="btnDelete">DELETE</button>
 
-
     <div id="container">
-
 
     </div>
     
@@ -31,6 +29,9 @@
 
 const printPictures = (url,title,copyright,date) => {
     container.innerHTML += date;
+
+    let result = array2.some(item => item > 6);
+
     favList.some((item) => {
         if(item.date === date){
 

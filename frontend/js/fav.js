@@ -10,13 +10,11 @@ gallery.addEventListener("click", (e) => {
         btnAnchor = e.target.parentElement;
         delData(btnAnchor.dataset.date);
     }else{
-        //console.log("other element");
     }
 });
 
 const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let div = document.createElement("div")
-    // div.classList.add("card")
     div.classList.add("col")
     div.classList.add("m-1")
     div.classList.add("bg-dark")
@@ -26,7 +24,6 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)
@@ -61,7 +58,6 @@ const printPictures = (picURL, picTitle, picAuthor, picDate)=>{
     heart.classList.add("bi-heart-fill")
     heart.dataset.target = "heartElement"
     anchor.appendChild(heart)
-    
 }
 
 const getData = () => {
