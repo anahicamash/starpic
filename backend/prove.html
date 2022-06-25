@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnGet">GET</button>
+    <button id="btnPost">POST</button>
+    <button id="btnDelete">DELETE</button>
+
+    <div id="container">
+
+    </div>
+    
+    <script>
+        const btnGet = document.getElementById("btnGet");
+        const btnPost = document.getElementById("btnPost");
+        const btnDelete = document.getElementById("btnDelete");
+
+        const container = document.getElementById("container");
+
+        const key= "l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A"
+        const URL = "https://api.nasa.gov/planetary/apod?api_key=l7iyIpVsowrInfdflY0ON9ywQFHMb8aEicUllh4A&start_date=2021-12-01&end_date=2021-12-24"
+
+        let favList = [];
+
+const printPictures = (url,title,copyright,date) => {
+    container.innerHTML += date;
+
+    let result = array2.some(item => item > 6);
+
+    favList.some((item) => {
+        if(item.date === date){
+
+        }
+    })
+}
+
+const getData = () => {
+    fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach((element) => {
+                if(element.media_type !== "video"){
+                    printPictures(element.url, element.title, element?.copyright||"Unknown", element.date)
+                }
+                
+            });
+        })
+        .catch(error => console.error(error))
+}
+getData()
+
+const getAll = () => {
+    fetch("http://localhost:4400/api/favorite")
+    .then(response => response.json())
+    .then((data) => {
+        favList = data;///////////////////////////
+        console.log(data);
+    })
+    .catch((error) => console.error(error));
+}
+
+getAll();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //EJEMPLO GET (continua igual, solo que ahora recibiras mas datos)
+        btnGet.addEventListener("click", async () => {
+            fetch("http://localhost:4400/api/favorite")
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => console.error(error));
+        });
+
+        //EJEMPLO POST
+        const idImageNasa = 7;//id de la imagen clickeada, con esta se asegura de que no ha sido agregada antes
+        const authorImageNasa = "Nasa author 6";
+        const titleImageNasa = "Nasa image 6";
+        const dateImageNasa = "2021-05-10";
+        const linkImageNasa = "https://www.thoughtco.com/thmb/Sc9zsxKbJvtExv15AnAuB4Cp2PM=/2121x1414/filters:fill(auto,1)/GettyImages-622013488-55a1fad50d93429fb927087e1f18cff8.jpg";
+
+        btnPost.addEventListener("click", async () => {
+            fetch(`http://localhost:4400/api/favorite/${idImageNasa}`,{ //el id que vas a mandar se lo concatenas a la url a la que le vas a hacer post
+                method:"POST",
+                body: JSON.stringify(
+                    {
+                        "_id" : idImageNasa,
+                        "author" : authorImageNasa,
+                        "title" : titleImageNasa,
+                        "date" : dateImageNasa, 
+                        "link" : linkImageNasa
+                    }
+                ),
+                headers: {'Content-Type': 'application/json; charset=UTF-8'}
+            })
+            .then(response => response.json())
+            .then((message) => {
+                console.log(message);
+            })
+            .catch((error) => console.error(error));
+        });
+
+        //EJEMPLO DELETE
+        btnDelete.addEventListener("click", async () => {
+            fetch(`http://localhost:4400/api/favorite/${idImageNasa}`,{ //el id que vas a mandar se lo concatenas a la url a la que le vas a hacer post
+                method: "DELETE"
+            })
+            .then(response => response.json())
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => console.error(error));
+        });
+    </script>
+</body>
+</html>
