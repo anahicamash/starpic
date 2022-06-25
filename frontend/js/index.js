@@ -64,7 +64,6 @@ const printPictures = (picURL, picTitle, picAuthor, picDate, favList)=>{
     let img = document.createElement("img")
     img.classList.add("card-img-top")
     img.src=picURL
-    // img.style= "width: 10rem"
     img.style= "height: 15rem"
     
     div.appendChild(img)
@@ -106,7 +105,7 @@ const printPictures = (picURL, picTitle, picAuthor, picDate, favList)=>{
     let heart =  document.createElement("i")
     heart.classList.add("bi")
     heart.classList.add("bi-heart-fill")
-    heart.dataset.target = "heartElement";//to identify the elementc
+    heart.dataset.target = "heartElement";
     anchor.appendChild(heart)
     
 }

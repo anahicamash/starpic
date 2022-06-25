@@ -4,8 +4,6 @@ gallery.addEventListener("click", (e) => {
     
     if(btnAnchor.dataset.target === "btnAnchor"){
         deleteData(btnAnchor.dataset.id);
-        // console.log(btnAnchor.dataset.picAuthor,btnAnchor.dataset.picTitle,btnAnchor.dataset.picDate,btnAnchor.dataset.url);
-
     }else if(btnAnchor.dataset.target === "heartElement" ){
         btnAnchor = e.target.parentElement;
         deleteData(btnAnchor.dataset.id);
